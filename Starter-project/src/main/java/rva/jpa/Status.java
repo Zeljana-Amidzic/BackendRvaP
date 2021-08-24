@@ -28,9 +28,9 @@ public class Status implements Serializable {
 
 	private String oznaka;
 
-	@JsonIgnore
 	//bi-directional many-to-one association to Student
 	@OneToMany(mappedBy="status", cascade = {CascadeType.DETACH, CascadeType.REMOVE})
+	@JsonIgnore
 	private List<Student> students;
 
 	public Status() {

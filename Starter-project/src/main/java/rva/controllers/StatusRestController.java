@@ -54,12 +54,20 @@ public class StatusRestController {
 	@PostMapping("status")
 	@ApiOperation(value="Dodaje novi status u bazu podataka")
 	public ResponseEntity<Status> insertStatus(@RequestBody Status status){
+		if(statusRepository.existsById(status.getId())) {
+			return new ResponseEntity<Status>(HttpStatus.CONFLICT);
+		}else {
+			statusRepository.save(status);
+			return new ResponseEntity<Status>(HttpStatus.OK);
+		}
+	}
+	/*public ResponseEntity<Status> insertStatus(@RequestBody Status status){
 		if(!statusRepository.existsById(status.getId())) {
 			statusRepository.save(status);
 			return new ResponseEntity<Status>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Status>(HttpStatus.CONFLICT);
-	}
+	}*/
 	
 	@PutMapping("status")
 	@ApiOperation(value="Modifikacija statusa koji postoji u bazi podataka")

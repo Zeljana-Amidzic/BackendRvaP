@@ -33,9 +33,9 @@ public class Departman implements Serializable {
 	@JoinColumn(name="fakultet")
 	private Fakultet fakultet;
 
-	@JsonIgnore
 	//bi-directional many-to-one association to Student
 	@OneToMany(mappedBy="departman")
+	@JsonIgnore
 	private List<Student> students;
 
 	public Departman() {

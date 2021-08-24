@@ -8,5 +8,5 @@ import rva.jpa.Status;
 
 public interface StatusRepository extends JpaRepository<Status, Integer>{
 
-	public Collection<Status> findByNazivContainingIgnoreCase(String naziv);
+	Collection<Status> findByNazivContainingIgnoreCase(String naziv);
 }

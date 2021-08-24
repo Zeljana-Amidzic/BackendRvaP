@@ -70,12 +70,20 @@ public class DepartmanRestController {
 	@PostMapping("departman")
 	@ApiOperation(value="Dodavanje novog departmana u bazu podataka")
 	public ResponseEntity<Departman> insertDepartman(@RequestBody Departman departman) {
+		if(departmanRepository.existsById(departman.getId())) {
+			return new ResponseEntity<Departman>(HttpStatus.CONFLICT);
+		}else {
+			departmanRepository.save(departman);
+			return new ResponseEntity<Departman>(HttpStatus.OK);
+		}
+	}
+	/*public ResponseEntity<Departman> insertDepartman(@RequestBody Departman departman) {
 		if(!departmanRepository.existsById(departman.getId())) {
 			departmanRepository.save(departman);
 			return new ResponseEntity<Departman>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Departman>(HttpStatus.CONFLICT);
-	}
+	}*/
 	
 	@PutMapping("departman")
 	@ApiOperation(value="Modifikacija departmana koji postoji u bazi podataka")

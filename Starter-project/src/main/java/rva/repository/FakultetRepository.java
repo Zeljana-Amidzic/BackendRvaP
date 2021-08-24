@@ -8,5 +8,5 @@ import rva.jpa.Fakultet;
 
 public interface FakultetRepository extends JpaRepository<Fakultet, Integer>{
 	
-	public Collection<Fakultet> findByNazivContainingIgnoreCase(String naziv);
+	Collection<Fakultet> findByNazivContainingIgnoreCase(String naziv);
 }
