@@ -50,7 +50,7 @@ public class FakultetRestController {
 	}
 	
 	@PostMapping("fakultet")
-	@ApiOperation(value="Dodaje novi fakultet u bazu podataka")
+	//@ApiOperation(value="Dodaje novi fakultet u bazu podataka")
 	public ResponseEntity<Fakultet> insertFakultet(@RequestBody Fakultet fakultet) {
 		if(!fakultetRepository.existsById(fakultet.getId())) {
 			fakultetRepository.save(fakultet);

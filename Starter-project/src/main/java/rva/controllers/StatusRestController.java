@@ -24,7 +24,7 @@ import rva.repository.StatusRepository;
 
 @CrossOrigin
 @RestController
-@Api(tags = {"Status CRUD operacije"})
+//@Api(tags = {"Status CRUD operacije"})
 public class StatusRestController {
 	//komentar zbog predaje
 	@Autowired
@@ -52,13 +52,13 @@ public class StatusRestController {
 	}
 	
 	@PostMapping("status")
-	@ApiOperation(value="Dodaje novi status u bazu podataka")
+	//@ApiOperation(value="Dodaje novi status u bazu podataka")
 	public ResponseEntity<Status> insertStatus(@RequestBody Status status){
-		if(statusRepository.existsById(status.getId())) {
-			return new ResponseEntity<Status>(HttpStatus.CONFLICT);
-		}else {
+		if(!statusRepository.existsById(status.getId())) {
 			statusRepository.save(status);
 			return new ResponseEntity<Status>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Status>(HttpStatus.CONFLICT);
 		}
 	}
 	/*public ResponseEntity<Status> insertStatus(@RequestBody Status status){
