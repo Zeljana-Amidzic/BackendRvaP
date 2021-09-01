@@ -68,7 +68,7 @@ public class StudentRestController {
 	}
 	
 	@PostMapping("student")
-	@ApiOperation(value="Dodavanje novog studenta u bazu podataka")
+	//@ApiOperation(value="Dodavanje novog studenta u bazu podataka")
 	public ResponseEntity<Student> insertStudent(@RequestBody Student student){
 		if(!studentRepository.existsById(student.getId()))
 		{
@@ -77,6 +77,7 @@ public class StudentRestController {
 		}
 		return new ResponseEntity<Student>(HttpStatus.CONFLICT);
 	}
+	
 	//@PutMapping("student/{id}")
 	@PutMapping("student")
 	@ApiOperation(value="Modifikacija studenta koji postoji u bazi podataka")

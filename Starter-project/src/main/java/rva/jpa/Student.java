@@ -22,23 +22,23 @@ public class Student implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="STUDENT_ID_GENERATOR")
 	private Integer id;
 
-	@Column(name="broj_indeksa")
-	private String brojIndeksa;
-
 	private String ime;
 
 	private String prezime;
-
-	//bi-directional many-to-one association to Departman
-	@ManyToOne
-	@JoinColumn(name="departman")
-	private Departman departman;
+	
+	@Column(name="broj_indeksa")
+	private String brojIndeksa;
 
 	//bi-directional many-to-one association to Status
 	@ManyToOne
 	@JoinColumn(name="status")
 	private Status status;
 
+	//bi-directional many-to-one association to Departman
+	@ManyToOne
+	@JoinColumn(name = "departman")
+	private Departman departman;
+	
 	public Student() {
 	}
 
