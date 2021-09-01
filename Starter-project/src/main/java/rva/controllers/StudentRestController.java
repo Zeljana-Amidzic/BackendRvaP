@@ -27,7 +27,7 @@ import rva.jpa.Student;
 @CrossOrigin
 @RestController
 public class StudentRestController {
-
+	//predaja projekta
 	@Autowired 
 	private StudentRepository studentRepository;
 	
