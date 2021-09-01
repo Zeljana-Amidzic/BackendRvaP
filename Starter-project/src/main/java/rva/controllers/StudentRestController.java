@@ -26,7 +26,7 @@ import rva.jpa.Student;
 
 @CrossOrigin
 @RestController
-@Api(tags = {"Student CRUD operacije"})
+//@Api(tags = {"Student CRUD operacije"})
 public class StudentRestController {
 
 	@Autowired 
@@ -42,26 +42,26 @@ public class StudentRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("student")
-	@ApiOperation(value="Vraæa kolekciju svih studenata iz baze podataka")
+	//@ApiOperation(value="Vraæa kolekciju svih studenata iz baze podataka")
 	public Collection<Student> getAllStudente() {
 		return studentRepository.findAll();
 	}
 	
 	@GetMapping("student/{id}")
-	@ApiOperation(value="Vraæa studenta sa prosledjenom vrednosti za id")
+	//@ApiOperation(value="Vraæa studenta sa prosledjenom vrednosti za id")
 	public Student getByIdStudente(@PathVariable("id") Integer id) {
 		return studentRepository.getOne(id);
 	}
 	
 	@GetMapping("studentDepartmanID/{id}")
-	@ApiOperation(value="Vraæa kolekciju svih studenata jednog departmana")
+	//@ApiOperation(value="Vraæa kolekciju svih studenata jednog departmana")
 	public Collection<Student> getStudentPoDepartmanu(@PathVariable("id") Integer id) {
 		Departman d = departmanRepository.getOne(id); 
 		return studentRepository.findByDepartman(d);
 	}
 	
 	@GetMapping("studentStatusID/{id}")
-	@ApiOperation(value="Vraæa kolekciju svih studenata konkretnog statusa")
+	//@ApiOperation(value="Vraæa kolekciju svih studenata konkretnog statusa")
 	public Collection<Student> getStudentPoStatusu(@PathVariable("id") Integer id) {
 		Status s = statusRepository.getOne(id);
 		return studentRepository.findByStatus(s);
@@ -80,7 +80,7 @@ public class StudentRestController {
 	
 	//@PutMapping("student/{id}")
 	@PutMapping("student")
-	@ApiOperation(value="Modifikacija studenta koji postoji u bazi podataka")
+	//@ApiOperation(value="Modifikacija studenta koji postoji u bazi podataka")
 	public ResponseEntity<Student> updateStudent(@RequestBody Student student){
 		if(!studentRepository.existsById(student.getId()))
 			return new ResponseEntity<Student>(HttpStatus.NO_CONTENT);
@@ -89,7 +89,7 @@ public class StudentRestController {
 	}
 	
 	@DeleteMapping("student/{id}")
-	@ApiOperation(value="Brisanje studenta po prosledjenoj vrednosti za id")
+	//@ApiOperation(value="Brisanje studenta po prosledjenoj vrednosti za id")
 	public ResponseEntity<Student> deleteStudent(@PathVariable("id") Integer id) {
 		if(!studentRepository.existsById(id))
 			return new ResponseEntity<Student>(HttpStatus.NO_CONTENT);

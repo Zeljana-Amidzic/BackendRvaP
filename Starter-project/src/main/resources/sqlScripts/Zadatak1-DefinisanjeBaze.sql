@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS student CASCADE;
 DROP TABLE IF EXISTS status CASCADE;
 
 DROP SEQUENCE IF EXISTS fakultet_seq;
-DROP SEQUENCE IF EXISTS departman_seq;
 DROP SEQUENCE IF EXISTS status_seq;
 DROP SEQUENCE IF EXISTS student_seq;
+DROP SEQUENCE IF EXISTS departman_seq;
 
 CREATE TABLE fakultet
 (
@@ -70,8 +70,8 @@ CREATE INDEX idxfk_student_status ON student(status);
 CREATE INDEX idxfk_student_departman ON student(departman);
 
 CREATE SEQUENCE fakultet_seq INCREMENT 1;
-CREATE SEQUENCE departman_seq INCREMENT 1;
 CREATE SEQUENCE student_seq INCREMENT 1;
+CREATE SEQUENCE departman_seq INCREMENT 1;
 CREATE SEQUENCE status_seq INCREMENT 1;
 
 
